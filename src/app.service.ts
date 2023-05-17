@@ -2,7 +2,7 @@ import { HttpService } from '@nestjs/axios'
 import { Injectable } from '@nestjs/common'
 import { Request } from 'express'
 import { lookup } from 'geoip-lite'
-import * as UAParser from 'ua-parser-js'
+import UAParser from 'ua-parser-js'
 
 interface Location {
     country_name: string

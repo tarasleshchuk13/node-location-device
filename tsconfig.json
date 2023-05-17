@@ -16,6 +16,8 @@
         "noImplicitAny": false,
         "strictBindCallApply": false,
         "forceConsistentCasingInFileNames": false,
-        "noFallthroughCasesInSwitch": false
+        "noFallthroughCasesInSwitch": false,
+        // allow import commonJS modules as default imports without * as ...
+        "esModuleInterop": true
     }
 }
