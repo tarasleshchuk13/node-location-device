@@ -2,7 +2,6 @@ import { HttpService } from '@nestjs/axios'
 import { Injectable } from '@nestjs/common'
 import { Request } from 'express'
 import { lookup } from 'geoip-lite'
-import * as requestIp from 'request-ip'
 import * as UAParser from 'ua-parser-js'
 
 interface Location {
@@ -18,7 +17,7 @@ export class AppService {
     
     async getData(req: Request) {
         const uaParserResult = new UAParser(req.headers['user-agent']).getResult()
-        const ip = requestIp.getClientIp(req)
+        const ip = req.ip?.toString().replace('::ffff:', '');
         const geo = lookup(ip)
         const location = await this.httpService.axiosRef.get<Location>(`https://ipapi.co/${ip}/json`)
         
@@ -34,3 +33,4 @@ export class AppService {
     }
     
 }
+
